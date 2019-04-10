@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:osc_flutter/constants/constants.dart';
+import 'package:osc_flutter/pages/discovery_page.dart';
+import 'package:osc_flutter/pages/news_list_page.dart';
+import 'package:osc_flutter/pages/profile_page.dart';
+import 'package:osc_flutter/pages/tweet_page.dart';
 import 'package:osc_flutter/widgets/navigation_icon_view.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +16,7 @@ class _HomePageState extends State<HomePage> {
   List<NavigationIconView> _navigationIconViews;
   var _currentIndex = 0;
   List<Widget> _pages;
+  PageController _pageController;
 
   @override
   void initState() {
@@ -36,28 +42,36 @@ class _HomePageState extends State<HomePage> {
           activeIconPath: 'assets/images/ic_nav_my_pressed.png'),
     ];
     _pages = [
-      Container(
-        color: Colors.blue,
-      ),
-      Container(
-        color: Colors.red,
-      ),
-      Container(
-        color: Colors.yellow,
-      ),
-      Container(
-        color: Colors.indigo,
-      )
+      NewsListPage(),
+      TweetPage(),
+      DiscoveryPage(),
+      ProfilePage()
     ];
+
+    _pageController = PageController(initialPage: _currentIndex);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('开源中国'),
+        title: Text(_appBarTitle[_currentIndex],
+          style: TextStyle(color: Color(AppColors.COLOR_APPBAR)),),
+        elevation: 0.0,
+        iconTheme: IconThemeData(color: Color(AppColors.COLOR_APPBAR)),
       ),
-      body: _pages[_currentIndex],
+      body: PageView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          return _pages[_currentIndex];
+        },
+        controller: _pageController,
+        itemCount: _pages.length,
+        onPageChanged: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: _navigationIconViews.map((view) => view.item).toList(),
         type: BottomNavigationBarType.fixed,
@@ -66,6 +80,7 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             _currentIndex = index;
           });
+          _pageController.animateToPage(index, duration: Duration(milliseconds: 1), curve: Curves.ease);
         },
       ),
       drawer: Drawer(),
