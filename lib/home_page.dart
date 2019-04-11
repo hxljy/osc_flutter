@@ -58,7 +58,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(_appBarTitle[_currentIndex],
           style: TextStyle(color: Color(AppColors.COLOR_APPBAR)),),
-        elevation: 0.0,
         iconTheme: IconThemeData(color: Color(AppColors.COLOR_APPBAR)),
       ),
       body: PageView.builder(
@@ -82,7 +81,8 @@ class _HomePageState extends State<HomePage> {
             _currentIndex = index;
           });
           _pageController.animateToPage(
-              index, duration: Duration(milliseconds: 1), curve: Curves.ease);
+              index,
+              duration: Duration(milliseconds: 1), curve: Curves.ease);
         },
       ),
       drawer: MyDrawer(
