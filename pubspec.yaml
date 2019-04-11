@@ -29,4 +29,6 @@ flutter:
   - assets/images/ic_nav_discover_actived.png
   - assets/images/ic_nav_my_normal.png
   - assets/images/ic_nav_my_pressed.png
+  #抽屉布局头部
+  - assets/images/cover_img.jpg
 

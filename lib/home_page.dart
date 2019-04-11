@@ -4,6 +4,7 @@ import 'package:osc_flutter/pages/discovery_page.dart';
 import 'package:osc_flutter/pages/news_list_page.dart';
 import 'package:osc_flutter/pages/profile_page.dart';
 import 'package:osc_flutter/pages/tweet_page.dart';
+import 'package:osc_flutter/widgets/my_drawer.dart';
 import 'package:osc_flutter/widgets/navigation_icon_view.dart';
 
 class HomePage extends StatefulWidget {
@@ -80,10 +81,15 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             _currentIndex = index;
           });
-          _pageController.animateToPage(index, duration: Duration(milliseconds: 1), curve: Curves.ease);
+          _pageController.animateToPage(
+              index, duration: Duration(milliseconds: 1), curve: Curves.ease);
         },
       ),
-      drawer: Drawer(),
+      drawer: MyDrawer(
+        headImgPath: 'assets/images/cover_img.jpg',
+        menuIcons: [Icons.send, Icons.home, Icons.error, Icons.settings],
+        menuTitles: ['发布动弹', '动弹小黑屋', '关于', '设置'],
+      ),
     );
   }
 }
