@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:osc_flutter/pages/about_page.dart';
+import 'package:osc_flutter/pages/publish_tweet_page.dart';
+import 'package:osc_flutter/pages/settings_page.dart';
+import 'package:osc_flutter/pages/tweet_black_house.dart';
 
 class MyDrawer extends StatelessWidget {
   final String headImgPath;
@@ -39,19 +43,19 @@ class MyDrawer extends StatelessWidget {
               switch (index) {
                 case 0:
                   //PublishTweetPage
-                  _navPush(context, Container());
+                  _navPush(context, PublishTweetPage());
                   break;
                 case 1:
                   //TweetBlackHousePage
-                  _navPush(context, Container());
+                  _navPush(context, TweetBlackHousePage());
                   break;
                 case 2:
                   //AboutPage
-                  _navPush(context, Container());
+                  _navPush(context, AboutPage());
                   break;
                 case 3:
                   //SettingsPage
-                  _navPush(context, Container());
+                  _navPush(context, SettingsPage());
                   break;
               }
             },
