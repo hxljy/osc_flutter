@@ -22,7 +22,7 @@ class _LoginWebPageState extends State<LoginWebPage> {
     super.initState();
     //监听url变化
     _flutterWebviewPlugin.onUrlChanged.listen((url) {
-      print('LoginWebPage url: $url');
+      print('LoginWebPage url---->> $url');
       if (mounted) {
         setState(() {
           isLoading = false;
