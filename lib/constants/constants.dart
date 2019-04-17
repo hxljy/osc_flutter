@@ -24,4 +24,5 @@ abstract class AppUrls {
 
   static const String MY_INFORMATION = HOST + '/action/openapi/my_information';
   static const String MESSAGE_LIST = HOST + '/action/openapi/message_list';
+  static const String NEWS_LIST = HOST + '/action/openapi/news_list';
 }
